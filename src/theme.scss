@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$lysurge-app-primary: mat-palette($mat-grey, 900);
+
+$lysurge-app-accent:  mat-palette($mat-lime, A200);
+
+$lysurge-app-warn:    mat-palette($mat-red);
+
+$lysurge-app-theme: mat-light-theme($lysurge-app-primary, $lysurge-app-accent, $lysurge-app-warn);
+
+@include angular-material-theme($lysurge-app-theme);

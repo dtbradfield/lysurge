@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyAp6UUbcvTejaaWUUxaqOAMCCc8qus9mt0",
+    authDomain: "lysurge-practice.firebaseapp.com",
+    databaseURL: "https://lysurge-practice.firebaseio.com",
+    projectId: "lysurge-practice",
+    storageBucket: "lysurge-practice.appspot.com",
+    messagingSenderId: "8125364935"
+  }
 };
 
 /*
