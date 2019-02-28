@@ -36,7 +36,7 @@ export class PostService {
   getPost(id: string) {
     return this.afs.doc<Post>(`posts/${id}`);
   }
-
+  
   create(data: Post) {
     this.postsCollection.add(data);
   }

@@ -9,7 +9,7 @@ import { PostService } from '../post.service';
 })
 export class PostDashboardComponent implements OnInit {
   title: string;
-  image: string = null;
+  link: string = null;
   content: string;
 
   buttonText: string = "Create Tab";
@@ -24,13 +24,14 @@ export class PostDashboardComponent implements OnInit {
       author: this.auth.authState.displayName || this.auth.authState.email,
       authorId: this.auth.currentUserId,
       content: this.content,
-      image: this.image,
+      link: this.link,
       date: new Date(),
       title: this.title
     }
     this.postService.create(data);
     this.title = '';
     this.content = '';
+    this.link = '';
     this.buttonText = 'Tab Added!';
     setTimeout(() => this.buttonText = "Create Tab", 3000);
   }
