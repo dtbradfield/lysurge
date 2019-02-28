@@ -1,3 +1,24 @@
-<p>
-  post-dashboard works!
-</p>
+<section>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          New Tab
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <input matInput placeholder="Tab Title" [(ngModel)]="title">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <textarea rows="9" matInput placeholder="Tab Content" [(ngModel)]="content"></textarea>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input type="url" matInput placeholder="Tab Link (optional, URLs only)" [(ngModel)]="link">
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="accent" (click)="createPost()" [disabled]="!title || !content">{{buttonText}}</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+</section>

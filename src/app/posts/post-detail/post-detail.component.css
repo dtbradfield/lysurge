@@ -1,0 +1,30 @@
+.sheet {
+    max-width: 670px;
+    margin: 1em auto;
+    background-color: #757780;
+    border: 2px solid #001011;
+    padding: 1%;
+}
+
+h2, p {
+    color: lime;
+}
+
+.tab-link {
+    text-decoration: none;
+    color: #6CCFF6;
+}
+
+.tab-link:hover {
+    text-decoration: underline;
+}
+
+.surge {
+    cursor: pointer;
+}
+
+.tab-content {
+    color: whitesmoke;
+    max-width: 67%;
+    margin-left: 3%;
+}

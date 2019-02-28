@@ -1,5 +1,15 @@
-<div *ngIf="post">
-  <h2>{{ post.title }}</h2>  
-  <p> {{ post.content }} </p>
-  <p style="font-size: 9px;"> tabbed by {{ post.author }} &bull; {{ post.date.seconds * 1000 | date: 'fullDate' }} </p>
+<div class="card-wrapper" *ngIf="post">
+  <div class="sheet">
+    <h2>{{ post.title }}</h2>
+    <div *ngIf="post.link">
+      <a href="{{post.link}}" target="_blank" class="tab-link"><p>Link</p></a>
+    </div>
+    <p class="tab-content">{{ post.content }}</p>
+    <hr>
+    <p style="font-size: 9px;">
+      tabbed by {{ post.author }} &bull; {{ post.date.seconds * 1000 | date: 'fullDate' }} &bull;
+      <a class="surge">&#9889;</a>
+    </p>
+  </div>
+  <hr width="33%">
 </div>

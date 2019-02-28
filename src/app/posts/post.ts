@@ -4,6 +4,6 @@ export class Post {
     author: string
     authorId: string
     content: string
-    image: string
+    link?: string
     date: Date
 }

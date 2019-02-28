@@ -1,0 +1,8 @@
+section {
+    max-width: 670px;
+    margin: 2em auto;
+}
+
+mat-form-field {
+    width: 100%;
+}

@@ -1,4 +1,15 @@
-<div *ngFor="let post of posts | async">
-  <h2 routerLink="{{post.id}}" style="cursor: pointer;">{{ post.title }}</h2>
-  <p>{{ post.content }}</p>
+<div class="card-wrapper" *ngFor="let post of posts | async">
+  <div class="sheet">
+    <h2 routerLink="{{post.id}}" style="cursor: pointer;">{{ post.title }}</h2>
+    <div *ngIf="post.link">
+      <a href="{{post.link}}" target="_blank" class="tab-link">Link</a>
+    </div>
+    <hr>
+    <p style="font-size: 9px;">
+      tabbed by {{ post.author }} &bull; {{ post.date.seconds * 1000 | date: 'fullDate' }} &bull;
+      <a class="surge">Comments</a> &bull;
+      <a class="surge">&#9889;</a>
+    </p>
+  </div>
+  <hr width="33%">
 </div>
