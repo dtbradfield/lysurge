@@ -15,11 +15,11 @@ h2, p {
     color: #6CCFF6;
 }
 
-.tab-link:hover, .edit:hover, .surge:hover, .delete:hover {
+.tab-link:hover, .surge:hover {
     text-decoration: underline;
 }
 
-.surge, .edit, .delete {
+.surge{
     cursor: pointer;
 }
 
@@ -27,12 +27,4 @@ h2, p {
     color: whitesmoke;
     max-width: 67%;
     margin-left: 3%;
-}
-
-.edit {
-    color: whitesmoke;
-}
-
-.delete {
-    color: red;
 }

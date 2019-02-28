@@ -6,4 +6,5 @@ export class Post {
     content: string
     link?: string
     date: Date
+    numberComments?: number
 }

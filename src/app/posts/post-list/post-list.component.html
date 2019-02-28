@@ -2,14 +2,28 @@
   <div class="sheet">
     <h2 routerLink="{{post.id}}" style="cursor: pointer;">{{ post.title }}</h2>
     <div *ngIf="post.link">
-      <a href="{{post.link}}" target="_blank" class="tab-link">Link</a>
+      <a href="{{post.link}}" target="_blank" class="tab-link">
+        <mat-icon>link</mat-icon> {{post.link}}
+      </a>
     </div>
     <hr>
-    <p style="font-size: 9px;">
-      tabbed by {{ post.author }} &bull; {{ post.date.seconds * 1000 | date: 'fullDate' }} &bull;
-      <a class="surge">Comments</a> &bull;
-      <a class="surge">&#9889;</a>
-    </p>
+    <div style="font-size: 9px;">
+      tabbed by {{ post.author }} &bull; {{ post.date.seconds * 1000 | date: 'fullDate' }}
+      <button mat-icon-button class="surge" color="accent">
+        <mat-icon>flash_on</mat-icon>
+      </button>
+      <button mat-icon-button class="surge">
+        <mat-icon>comment</mat-icon>
+      </button>
+      <mat-card-actions *ngIf="auth.currentUserId === post.authorId">
+        <button mat-icon-button class="edit">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <button mat-icon-button class="delete" (click)="delete(post.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </div>
   </div>
   <hr width="33%">
 </div>
