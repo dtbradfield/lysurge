@@ -1,24 +1,64 @@
-<div class="card-wrapper" mat-card *ngIf="post">
-  <div class="sheet">
-    <h2>{{ post.title }}</h2>
-    <div *ngIf="post.link">
-      <a href="{{post.link}}" target="_blank" class="tab-link">
-        <p>Link</p>
-      </a>
-    </div>
-    <p class="tab-content">{{ post.content }}</p>
-    <hr>
-    <div style="font-size: 9px;">
-      tabbed by {{ post.author }} &bull; {{ post.date.seconds * 1000 | date: 'fullDate' }}
-      <mat-card-actions align-end>
-        <button mat-button class="surge">&#9889;</button>
-      </mat-card-actions>
+<ng-container *ngIf="post">
+  <div class="sheet" [hidden]="!editing">
+    <h2>Edit:</h2>
+    <mat-form-field>
+      <input matInput placeholder="Tab Title" [(ngModel)]="post.title">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <textarea rows="9" matInput placeholder="Tab Content" [(ngModel)]="post.content"></textarea>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input type="url" matInput placeholder="Tab Link (optional, URLs only)" [(ngModel)]="post.link">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="accent" (click)="updatePost()">Save</button>
+    <button mat-button (click)="editing=false">Cancel</button>
+  </div>
+
+
+  <div [hidden]="editing">
+    <div class="card-wrapper" mat-card>
+      <div class="sheet">
+        <h2>{{ post.title }}</h2>
+        <div *ngIf="post.link">
+          <a href="{{post.link}}" target="_blank" class="tab-link">
+            <p>Link</p>
+          </a>
+        </div>
+        <p class="tab-content">{{ post.content }}</p>
+        <hr>
+        <div style="font-size: 9px;">
+          tabbed by {{ post.author }} &bull; {{ post.date.seconds * 1000 | date: 'fullDate' }}
+          <mat-card-actions>
+            <button mat-icon-button class="surge" color="accent" (click)="surging(post.surging)">
+              <span>{{post.surging}}</span>
+              <mat-icon>flash_on</mat-icon>
+            </button>
+            <button mat-icon-button class="surge" (click)="comment()">
+              {{post.numberComments}}
+              <mat-icon>comment</mat-icon>
+            </button>
+          </mat-card-actions>
+          <mat-card-actions *ngIf="auth.currentUserId === post.authorId">
+            <button mat-icon-button class="edit" (click)="editing=true">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <button mat-icon-button class="delete" (click)="delete()">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-actions>
+        </div>
+      </div>
+      <hr width="33%">
     </div>
   </div>
-  <hr width="33%">
-</div>
-<div class="sheet">
-  <h3 style="color: #6CCFF6">Comments:</h3>
-  <hr>
-  <p class="tab-content">still working on them!</p>
-</div>
+
+
+  <div class="sheet" [hidden]="editing">
+    <h3 style="color: #6CCFF6">Comments:</h3>
+    <hr>
+    <p class="tab-content">still working on them!</p>
+  </div>
+</ng-container>

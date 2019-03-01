@@ -2,11 +2,17 @@
     flex: 1 1 auto;
 }
 
-span:focus {
+span:focus, img:focus {
     outline: none;
     border: 0;
 }
 
-span {
+span, img {
     cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+span:hover, img:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
 }

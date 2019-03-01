@@ -26,7 +26,9 @@ export class PostDashboardComponent implements OnInit {
       content: this.content,
       link: this.link,
       date: new Date(),
-      title: this.title
+      title: this.title,
+      numberComments: 0,
+      surging: 1
     }
     this.postService.create(data);
     this.title = '';

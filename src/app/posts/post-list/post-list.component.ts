@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/core/auth.service';
 })
 export class PostListComponent implements OnInit {
   posts: Observable<Post[]>;
+  post: Post;
 
   constructor(private postService: PostService, public auth: AuthService) { }
 
@@ -21,7 +22,9 @@ export class PostListComponent implements OnInit {
   }
 
   delete(id: string) {
-    this.postService.delete(id);
+    if (confirm("You sure you want to delete this?")) {
+      this.postService.delete(id);
+    }
   }
 
 }

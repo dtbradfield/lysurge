@@ -19,8 +19,16 @@ h2, p {
     text-decoration: underline;
 }
 
-.surge{
+.surge .edit, .delete {
     cursor: pointer;
+}
+
+.edit {
+    color: whitesmoke;
+}
+
+.delete {
+    color: red;
 }
 
 .tab-content {

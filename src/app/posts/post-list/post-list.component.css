@@ -6,6 +6,11 @@
     padding: 1%;
 }
 
+h2:focus {
+    outline: none;
+    border: 0;
+}
+
 h2:hover {
     color: #FFFFFC;
     text-decoration: underline;
