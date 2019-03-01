@@ -36,7 +36,7 @@
               <span>{{post.surging}}</span>
               <mat-icon>flash_on</mat-icon>
             </button>
-            <button mat-icon-button class="surge" (click)="onReplyMode()">
+            <button mat-icon-button class="surge">2
               <mat-icon>comment</mat-icon>
             </button>
           </mat-card-actions>
@@ -56,38 +56,6 @@
 
 
   <div class="sheet" [hidden]="editing">
-    <h3 style="color: #6CCFF6">Comments:</h3>
-    <hr>
-    <p>nothing yet cuz im dumb</p>
-
-    <!-- <div [hidden]="replyMode" *ngIf="post.comments">
-      <div class="card-wrapper" *ngFor="let comment of post.comments; let i = index">
-        <div class="sheet">
-          <span>{{ post.comments[i].replyContent }}</span>
-          <div style="font-size: 9px;">
-            {{ post.comments[i].replyAuthor }} &bull; {{ post.comments[i].replyDate.seconds * 1000 | date: 'fullDate' }}
-          </div>
-        </div>
-        <hr width="33%">
-      </div>
-    </div> -->
-
-    <section [hidden]="!replyMode">
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              New Comment
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <mat-form-field>
-            <textarea rows="9" matInput placeholder="Comment Content" [(ngModel)]="replyContent"></textarea>
-          </mat-form-field>
-          <br>
-          <button mat-raised-button color="accent" (click)="createComment()"
-            [disabled]="!replyContent">{{replyButtonText}}</button>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </section>
+    <app-comments></app-comments>    
   </div>
 </ng-container>

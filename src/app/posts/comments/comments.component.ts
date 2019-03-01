@@ -35,4 +35,8 @@ export class CommentsComponent implements OnInit {
     }, 3000);
   }
 
+  onReply() {
+    this.replyMode = !this.replyMode;
+  }
+
 }

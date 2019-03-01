@@ -6,6 +6,14 @@
     padding: 1%;
 }
 
+h2 {
+    font-size: 32px;
+}
+
+p {
+
+}
+
 h2, p {
     color: lime;
 }
@@ -35,4 +43,5 @@ h2, p {
     color: whitesmoke;
     max-width: 67%;
     margin-left: 3%;
+    font-size: 22px;
 }

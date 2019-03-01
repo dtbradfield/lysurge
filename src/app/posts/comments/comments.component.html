@@ -1,0 +1,21 @@
+<div class="sheet"><h2>Comments:</h2></div>
+<section [hidden]="replyMode">
+        <button mat-raised-button color="accent" (click)="onReply()">press</button>
+</section>
+<section [hidden]="!replyMode">
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    New Comment
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field>
+                <textarea rows="9" matInput placeholder="Comment Content" [(ngModel)]="replyContent"></textarea>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button color="accent" (click)="onReply()"
+                [disabled]="!replyContent">press</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+</section>

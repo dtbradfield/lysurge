@@ -13,9 +13,6 @@ import { AuthService } from 'src/app/core/auth.service';
 export class PostDetailComponent implements OnInit {
   post: Post;
   editing: boolean = false;
-  replyContent: string;
-  replyButtonText: string = "Reply";
-  replyMode: boolean = false;
   id = this.route.snapshot.paramMap.get('id');
   
   constructor(private route: ActivatedRoute, private postService: PostService, private auth: AuthService, private router: Router) { }
@@ -44,10 +41,6 @@ export class PostDetailComponent implements OnInit {
       this.postService.delete(this.id);
       this.router.navigate(["/sheet"]);
     }
-  }
-
-  onReplyMode() {
-    this.replyMode = true;
   }
 
 }
