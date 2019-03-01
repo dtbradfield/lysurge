@@ -9,12 +9,12 @@
     <hr>
     <div style="font-size: 9px;">
       tabbed by {{ post.author }} &bull; {{ post.date.seconds * 1000 | date: 'fullDate' }}
-      <button mat-icon-button class="surge" color="accent" (click)="surging(post.surging)">
+      <button mat-icon-button class="surge" color="accent" (click)="onSurge()">
         <span>{{post.surging}}</span>
         <mat-icon>flash_on</mat-icon>
       </button>
-      <button mat-icon-button class="surge">
-          <span>{{post.numberComments}}</span>
+      <button mat-icon-button class="surge" routerLink="{{post.id}}">
+        <span></span>
         <mat-icon>comment</mat-icon>
       </button>
     </div>

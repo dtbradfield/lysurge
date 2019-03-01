@@ -13,7 +13,11 @@ import { AuthService } from 'src/app/core/auth.service';
 export class PostDetailComponent implements OnInit {
   post: Post;
   editing: boolean = false;
-
+  replyContent: string;
+  replyButtonText: string = "Reply";
+  replyMode: boolean = false;
+  id = this.route.snapshot.paramMap.get('id');
+  
   constructor(private route: ActivatedRoute, private postService: PostService, private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -22,35 +26,28 @@ export class PostDetailComponent implements OnInit {
   }
 
   getPost() {
-    const id = this.route.snapshot.paramMap.get('id');
-    return this.postService.getPostData(id).subscribe(data => (this.post = data));
+    return this.postService.getPostData(this.id).subscribe(data => (this.post = data));
   }
 
   updatePost() {
     const formData = {
       title: this.post.title,
       content: this.post.content,
-      link: this.post.link ? this.post.link : '',
-      surging: this.post.surging
+      link: this.post.link ? this.post.link : ''
     }
-    const id = this.route.snapshot.paramMap.get('id');
-    this.postService.update(id, formData);
+    this.postService.update(this.id, formData);
     this.editing = false;
   }
 
   delete() {
-    const id = this.route.snapshot.paramMap.get('id');
     if (confirm("You sure you want to delete this?")) {
-      this.postService.delete(id);
+      this.postService.delete(this.id);
       this.router.navigate(["/sheet"]);
     }
   }
 
-  surging(value: number) {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (this.post.id) {
-      this.postService.update(id, { surging: value + 1 });
-    }
+  onReplyMode() {
+    this.replyMode = true;
   }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { AuthService } from 'src/app/core/auth.service';
 import { PostService } from '../post.service';
 
@@ -14,7 +16,7 @@ export class PostDashboardComponent implements OnInit {
 
   buttonText: string = "Create Tab";
   
-  constructor(private auth: AuthService, private postService: PostService) { }
+  constructor(private auth: AuthService, private postService: PostService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -27,7 +29,6 @@ export class PostDashboardComponent implements OnInit {
       link: this.link,
       date: new Date(),
       title: this.title,
-      numberComments: 0,
       surging: 1
     }
     this.postService.create(data);
@@ -35,7 +36,11 @@ export class PostDashboardComponent implements OnInit {
     this.content = '';
     this.link = '';
     this.buttonText = 'Tab Added!';
-    setTimeout(() => this.buttonText = "Create Tab", 3000);
+    setTimeout(() => {
+      this.buttonText = "Create Tab";
+      this.router.navigate(["/sheet"]);
+    }, 10);
   }
+
 
 }

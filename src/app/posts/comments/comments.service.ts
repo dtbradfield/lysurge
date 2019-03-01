@@ -7,21 +7,21 @@ import {
   AngularFirestoreDocument
 } from '@angular/fire/firestore';
 
-import { Post } from './post';
+import { Comment } from '../comment';
 
 @Injectable()
 export class PostService {
-  postsCollection: AngularFirestoreCollection<Post>;
-  postDoc: AngularFirestoreDocument<Post>;
+  commentsCollection: AngularFirestoreCollection<Comment>;
+  postDoc: AngularFirestoreDocument<Comment>;
 
   constructor(private afs: AngularFirestore) {
-    this.postsCollection = this.afs.collection('posts', ref => ref.orderBy('date', 'desc'))
+    this.commentsCollection = this.afs.collection('comments', ref => ref.orderBy('date', 'asc'))
   }
 
-  getPosts(): Observable<Post[]> {
-    return this.postsCollection.snapshotChanges().pipe(map(actions => {
+  getComments(): Observable<Comment[]> {
+    return this.commentsCollection.snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
-        const data = a.payload.doc.data() as Post;
+        const data = a.payload.doc.data() as Comment;
         const id = a.payload.doc.id;
         return { id, ...data };
       })
@@ -29,16 +29,16 @@ export class PostService {
   }
 
   getPostData(id: string) {
-    this.postDoc = this.afs.doc<Post>(`posts/${id}`);
+    this.postDoc = this.afs.doc<Comment>(`posts/${id}`);
     return this.postDoc.valueChanges();
   }
 
   getPost(id: string) {
-    return this.afs.doc<Post>(`posts/${id}`);
+    return this.afs.doc<Comment>(`posts/${id}`);
   }
 
-  create(data: Post) {
-    this.postsCollection.add(data);
+  create(data: Comment) {
+    this.commentsCollection.add(data);
   }
 
   delete(id: string) {
