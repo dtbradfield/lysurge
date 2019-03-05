@@ -1,3 +1,5 @@
+This project uses Firebase (for storing/reasind/updating) the API, Angular 7, and Angular Material.
+
 # Lysurge
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
